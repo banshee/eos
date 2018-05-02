@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:latest
+    labels:
+      mongoport: &mongoport 27017
+    hostname: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - eosnet
+
+  nodeosd:
+    image: eosio/eos:latest
+    command:
+      - /opt/eosio/bin/nodeosd.sh
+      - --data-dir /opt/eosio/bin/data-dir
+      - --plugin eosio::account_history_api_plugin 
+      - --resync
+      - --mongodb-uri mongodb://mongo:27017/EOS
+    hostname: nodeosd
+    ports:
+      # the default port is 8888 for the http interface
+      - 8870:8888
+      - 9876:9876
+    networks:
+      - eosnet
+
+  keosd:
+    image: eosio/eos:latest
+    labels:
+      walletport: 8899
+    command: /opt/eosio/bin/keosd --wallet-dir /opt/eosio/bin/data-dir --http-server-address 0.0.0.0:8899
+    hostname: keosd
+    ports:
+      - 8899:8899
+      - 9091:9091
+    networks:
+      - eosnet
+
+  dev:
+    image: eosio/localdev:latest
+    hostname: dev
+    # touch /tmp/dockerexit and the container will exit
+    command: inotifywait /tmp/dockerexit
+    networks:
+      - eosnet
+
+networks:
+  eosnet:
