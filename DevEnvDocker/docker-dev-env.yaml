@@ -39,13 +39,5 @@ services:
     networks:
       - eosnet
 
-  dev:
-    image: eosio/localdev:latest
-    hostname: dev
-    # touch /tmp/dockerexit and the container will exit
-    command: inotifywait /tmp/dockerexit
-    networks:
-      - eosnet
-
 networks:
   eosnet:
