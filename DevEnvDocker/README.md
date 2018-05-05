@@ -3,7 +3,7 @@
 ## Read SETUP.md first
 
 # Create the docker stack
-    docker stack deploy -c docker-dev-env.yml eos
+    docker stack deploy -c docker-dev-env.yaml eos
 
 ### you can use anything you want in place of "eos" - the name isn't important
 
