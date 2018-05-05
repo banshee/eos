@@ -6,7 +6,8 @@
 
 2.  Build the images.  Or don't; you can use eosio/eos from docker hub, but it's been 
 unreliable occassionally.
-    ( cd devBuilder ; docker build . -t eosio/localdev ; )
+    cd Docker
     ( docker build . -t eosio/eos ; )
+    ( cd devBuilder ; docker build . -t eosio/localdev ; )
 
 3.  Now read README.md
