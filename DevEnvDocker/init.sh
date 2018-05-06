@@ -2,23 +2,21 @@ eosdir=${1:-..}
 
 # Set variables for these machines:
 #
-#   dev - a development machine
 #   nodeos - runs the EOS server
 #   keos - runs the wallet server
 
-dev=$(docker ps --filter label=com.docker.swarm.service.name=eos_dev --format="{{.ID}}")
 nodeos=$(docker ps --filter label=com.docker.swarm.service.name=eos_nodeosd --format="{{.ID}}")
 keos=$(docker ps --filter label=com.docker.swarm.service.name=eos_keosd --format="{{.ID}}")
 
 # store the options we pass to cleos
-cleosOptions="--wallet-port 8899 --port 8870"
+cleosOptions="--url http://localhost:8870 --wallet-url http://localhost:8899"
 
 # Note that the wallet is available on
 # host port 8899, nodeos is on 8870.  Those ports are changed by editing docker-dev-env.yaml.
 
 # create a wallet called default.
 
-wallet=$(cleos --wallet-port 8899 wallet create | tail -1)
+wallet=$(cleos $cleosOptions wallet create | tail -1)
 
 # create some keys
 
@@ -36,14 +34,14 @@ echo
 
 # Now we need to get those keys into the wallet
 
-cleos --wallet-port 8899 wallet import $private
+cleos $cleosOptions wallet import $private
 
 echo
 
 # Useful wallet commands:
 #
-# cleos --wallet-port 8899 wallet list 
-# cleos --wallet-port 8899 wallet keys 
+# cleos $cleosOptions wallet list 
+# cleos $cleosOptions wallet keys 
 
 # now we need an account (or more than one)
 
@@ -54,7 +52,7 @@ cleos $cleosOptions create account eosio eosio.msig $public $public
 echo
 
 echo > settings.sh
-for i in public private wallet dev nodeos cleosOptions; do
+for i in public private wallet nodeos cleosOptions; do
   echo $i=\"$(eval echo \$$i)\" >> settings.sh
 done
 
