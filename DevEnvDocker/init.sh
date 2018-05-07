@@ -48,6 +48,9 @@ echo
 cleos $cleosOptions create account eosio eosio.token $public $public
 cleos $cleosOptions create account eosio eosio.msig $public $public
 cleos $cleosOptions create account eosio james $public $public
+cleos $cleosOptions create account eosio alice $public $public
+cleos $cleosOptions create account eosio bob $public $public
+cleos $cleosOptions create account eosio carol $public $public
 
 echo > settings.sh
 for i in public private wallet nodeos cleosOptions; do
