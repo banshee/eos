@@ -266,7 +266,11 @@
 	  # Build eos.io package
 		if ! "$CMAKE" -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" -DCMAKE_CXX_COMPILER="${CXX_COMPILER}" \
 			-DCMAKE_C_COMPILER="${C_COMPILER}" -DWASM_ROOT="${WASM_ROOT}" \
+<<<<<<< HEAD
 			-DOPENSSL_ROOT_DIR="${OPENSSL_ROOT_DIR}" -DCMAKE_INSTALL_PREFIX=/home/james/eosbin ..
+=======
+			-DOPENSSL_ROOT_DIR="${OPENSSL_ROOT_DIR}" -DCMAKE_INSTALL_PREFIX="/home/james/eosinstalldir" ..
+>>>>>>> Some development work
 		then
 			printf "\\n\\t>>>>>>>>>>>>>>>>>>>> CMAKE building eos.io package has exited with the above error.\\n\\n"
 			exit -1
