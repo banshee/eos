@@ -13,12 +13,7 @@ services:
 
   nodeosd:
     image: eosio/eos:latest
-    command:
-      - /opt/eosio/bin/nodeosd.sh
-      - --data-dir /opt/eosio/bin/data-dir
-      - --plugin eosio::account_history_api_plugin 
-      - --resync
-      - --mongodb-uri mongodb://mongo:27017/EOS
+    command: /opt/eosio/bin/nodeosd.sh --data-dir /opt/eosio/bin/data-dir --resync --plugin eosio::history_api_plugin 
     hostname: nodeosd
     ports:
       # the default port is 8888 for the http interface
