@@ -53,7 +53,7 @@ cleos $cleosOptions create account eosio bob $public $public
 cleos $cleosOptions create account eosio carol $public $public
 
 echo > settings.sh
-for i in public private wallet nodeos cleosOptions; do
+for i in eosdir public private wallet nodeos cleosOptions; do
   echo $i=\"$(eval echo \$$i)\" >> settings.sh
 done
 
