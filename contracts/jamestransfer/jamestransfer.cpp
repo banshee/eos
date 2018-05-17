@@ -90,7 +90,7 @@ public:
             CurrencyQuantity exchangeRate,
             CurrencyQuantity dollarsPerUnit
     ) {
-        print("newExchangeRate %d %d", currency, dollarsPerUnit);
+//        print("newExchangeRate %d %d", productId, dollarsPerUnit);
     }
 
 
