@@ -19,6 +19,9 @@ public:
     // Amazon
     // Alaska Airlines
 
+    typedef int CurrencyId;
+    typedef double CurrencyQuantity;
+
     double currentDollarsAvailable;
     double maxIndividualPurchase;
     double eosExchangeRate; // EOS to dollars
@@ -72,14 +75,26 @@ public:
 
     //@abi action
     void newExchangeRate(
-            account_name account,
-            int currency,
-            double dollarsPerUnit
+            account_name seller,
+            CurrencyId currency,
+            CurrencyQuantity dollarsPerUnit
     ) {
         print("newExchangeRate %d %d", currency, dollarsPerUnit);
     }
 
-    ///@abi action
+    //@abi action
+    void purchase(
+            account_name seller,
+            account_name purchaser,
+            ProductId productId,
+            CurrencyQuantity exchangeRate,
+            CurrencyQuantity dollarsPerUnit
+    ) {
+        print("newExchangeRate %d %d", currency, dollarsPerUnit);
+    }
+
+
+    //@abi action
     void hi(account_name user) {
         print("Hello ", name{user});
     }
