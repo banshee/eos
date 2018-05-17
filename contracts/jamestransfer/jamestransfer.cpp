@@ -70,9 +70,14 @@ public:
     // Want to display:
     // Maximum purchase amount: (max of $5k or currentDollarsAvailable)
 
- //@abi action
- void newExchangeRate (account_name account, int currency, double dollarsPerUnit) {
- }
+    //@abi action
+    void newExchangeRate(
+            account_name account,
+            int currency,
+            double dollarsPerUnit
+    ) {
+        print("newExchangeRate %d %d", currency, dollarsPerUnit);
+    }
 
     ///@abi action
     void hi(account_name user) {
