@@ -65,13 +65,14 @@ public:
      *    purchaseAccepted purchaseId
      *    purchaseCompleted purchaseId
      *    purchaseRejected purchaseId reasonCode
-     *
-     * How do you send a string to an eos action?
-     * How do you transfer money in an eos action?
      */
 
     // Want to display:
     // Maximum purchase amount: (max of $5k or currentDollarsAvailable)
+
+ //@abi action
+ void newExchangeRate (account_name account, int currency, double dollarsPerUnit) {
+ }
 
     ///@abi action
     void hi(account_name user) {
